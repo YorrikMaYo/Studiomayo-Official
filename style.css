@@ -322,6 +322,63 @@ p.hero-small-text {
     background-color: var(--black);
 }
 
+
+
+/* The Modal Overlay */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    
+    /* Ensure the blur only happens on the overlay */
+    background: transparent;
+    backdrop-filter: blur(15px);
+    
+    /* Flexbox centers the image naturally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* New: Hiding logic */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Apply this class via JS */
+.modal.is-visible {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* The Image inside the modal */
+.modal-content {
+    /* Existing settings */
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
+    
+    /* ADD THESE TWO LINES */
+    width: auto;
+    height: auto;
+    
+    /* Keep the aesthetics */
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* The Close "X" */
+.close {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: var(--on-white);
+    font-size: 40px;
+    cursor: pointer;
+}
+
 /* =====================================
    LEFT SIDEBAR
    ===================================== */
@@ -392,19 +449,32 @@ p.hero-small-text {
 /* Flexible context boundaries for your magazine spread mockup */
 .project-image-wrapper {
     width: 100%;
-    height: 100%;
+    /* Remove height: 100% to allow it to shrink to the image size */
     display: flex;
-    align-items: end; /* Flex centers the book layout vertically inside grid track */
     justify-content: center;
-    margin-bottom: -2rem;
+    align-items: center; /* Change end to center to ensure perfect alignment */
+    overflow: hidden;    /* Clips anything outside the image boundary */
 }
 
 .project-image-wrapper img {
     width: 100%;
     height: auto;
-    max-height: 60vh; /* Hard limits the mockup height to prevent unwanted vertical scrolling */
+    max-height: 60vh;
     object-fit: contain;
+    /* Add display: block to remove the 4px baseline ghost space */
+    display: block; 
 }
+
+/* Force the scale by being extremely specific */
+#work-image.wrk-image {
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+#work-image.wrk-image:hover {
+    filter: brightness(1.1); /* Image gets 10% brighter */
+}
+
 
 /* ==========================================================================
    ANIMATION FOR PROJECT SWITCH: FADES IN NEW IMAGES SMOOTHLY
