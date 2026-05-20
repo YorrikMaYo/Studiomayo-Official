@@ -1119,6 +1119,10 @@ p.hero-small-text {
                 --fs-nav: 1.2rem;
             }
 
+            .worklink {
+                display: none;
+            }
+
 
             body {
                 overflow-x: hidden;
