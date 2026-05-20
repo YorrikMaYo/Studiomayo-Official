@@ -70,7 +70,7 @@ The project combines photography, typography, and layout design to create a visu
             This project was a way for Yorrik to explore his own mind and the way he processes information. It was also a way for him to express his feelings and emotions in a creative way.
         
 The project combines photography, typography, and layout design to create a visually stunning magazine.`,
-            img: "assets/images/PosterPrikkels-collage.jpg",
+            img: "assets/images/posterprikkels-collage.jpg",
             link: "#"
         },
 
