@@ -57,9 +57,9 @@ The font is designed to be used in a variety of contexts, such as headlines, log
             title: "ANIPFY",
             desc: `ANIPFY or And now i pray for you, is Marcel's graduation project. It's an alternative magazine / LP cover about the music and artistic approach of Westside Gunn, a rapper from Buffalo New York.
         
-It is a tribute to Westside's unique style and his influence on the hip-hop scene. As well as a tribute to the influence hi-hop has had on Marcel's work and life. 
+                    It is a tribute to Westside's unique style and his influence on the hip-hop scene. As well as a tribute to the influence hip-hop has had on Marcel's work and life. 
         
-The project combines photography, typography, and layout design to create a visually stunning magazine.`,
+                    The project combines photography, typography, and layout design to create a visually stunning magazine.`,
             img: "assets/images/anipfy-collage.jpg",
             link: "#"
         },
@@ -75,10 +75,10 @@ The project combines photography, typography, and layout design to create a visu
         },
 
                 {
-            title: "woodstock font",
-            desc: `for an assignment in typedesign at LUCA, Marcel created a custom font for the woodstock festival. Under a strong sense of 'what if' scenario. 
+            title: "Woodstock font",
+            desc: `For an assignment in typedesign at LUCA, Marcel created a custom font for the woodstock festival. Under a strong sense of 'what if' scenario. 
             
-            what if the woodstock festival was still going on, but in 2023? What would the font look like? Marcel wanted to create a font that was inspired by the original woodstock font, but with a modern twist. The font is designed to be used in a variety of contexts, such as headlines, logos, and body text.`,
+            What if the woodstock festival was still going on, but in 2023? What would the font look like? Marcel wanted to create a font that was inspired by the original woodstock font, but with a modern twist. The font is designed to be used in a variety of contexts, such as headlines, logos, and body text.`,
             img: "assets/images/woodstock-collage.jpg",
             link: "#"
         },
