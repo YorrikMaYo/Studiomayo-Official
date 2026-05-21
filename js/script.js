@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Bar Coda merch",
             desc: `Bar Coda is a bar in ghent of which we had the honour to brand. The logo is a visual representation of the coda sign from music notation, and the type is custom made! Last year we created merch-prints for the bar, which we printed with a local screenprinter.
             
-            The shirts have a line of music notes, which are actually the oping notes of rick roll's 'never gonna give you u'. The idea was to trigger the many musicians in the bar to find out.`,
+            The shirts have a line of music notes, which are actually the oping notes of rick roll's 'never gonna give you up'. The idea was to trigger the many musicians in the bar to find out.`,
             img: "assets/images/barcoda-collage.jpg",
             link: "#"
         },
