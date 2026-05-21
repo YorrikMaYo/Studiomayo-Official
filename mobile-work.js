@@ -67,7 +67,7 @@ const myPortfolio = [
     },
     {
         title: "ANIPFY",
-        description:"ANIPFY or And now i pray for you, is Marcel's graduation project. It's an alternative magazine / LP cover about the music and artistic approach of Westside Gunn, a rapper from Buffalo New York.",
+        description:"ANIPFY or And Now I Pray For You, is Marcel's graduation project. It's an alternative magazine / LP cover about the music and artistic approach of Westside Gunn, a rapper from Buffalo New York.",
         tags: ["Marcel VR", "Book / LP-cover"],
         images: [
             "webp-im/atipfy_1.webp",
