@@ -61,8 +61,6 @@ const myPortfolio = [
             "webp-im/twinning_4.webp",
             "webp-im/twinning_5.webp",
             "webp-im/twinning_6.webp",
-
-
         ]
     },
     {

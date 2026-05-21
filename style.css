@@ -23,7 +23,7 @@ ROOT — CSS VARIABLES -- CONTROL CENTRE
   --fs-hero-title: clamp(3.5rem, 1.5rem + 6vw, 6rem);
   --fs-h2: clamp(1.8rem, 1.2rem + 1vw, 2.5rem);
   --fs-body: clamp(0.7rem, 0.9rem + 1vw, 1.2rem);
-  --fs-body-member: clamp(0.4rem, 0.5rem + 0.8vw, 0.9rem);
+  --fs-body-member: clamp(0.5rem, 0.5rem + 0.8vw, 1rem);
   --fs-link: clamp(0.6rem, 0.8rem + 0.7vw, 1.1rem);
   --fs-link-hero: clamp(1rem, 1.2rem + 1vw, 1.5rem);
   --fs-nav: clamp(0.8rem, 1rem + 1vw, 1.8rem);
@@ -35,6 +35,14 @@ ROOT — CSS VARIABLES -- CONTROL CENTRE
   --fw-body: 200;
   --fw-link: 400;
   --fw-h2: 300;
+}
+
+.logo-grey-fill{
+  fill: var(--off-white);
+}
+
+.logo-orange-fill {
+  fill: var(--primary-color);
 }
 
 html {
@@ -339,6 +347,85 @@ p.hero-small-text {
   background-color: var(--black);
 }
 
+#work-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    gap: 20px; /* Adjust spacing between images */
+    width: 95%;
+    scroll-behavior: smooth;
+}
+
+/* The track (the background area of the scrollbar) */
+#work-carousel::-webkit-scrollbar {
+    height: 0.7rem; /* Height of the scrollbar */
+    background-color: transparent; /* Makes it look clean */
+}
+
+/* The thumb (the part you drag) */
+#work-carousel::-webkit-scrollbar-thumb {
+    background-color: var(--on-white); /* Matches your orange tags */
+    border-radius: 10px; /* Makes it pill-shaped to match tags */
+    border: 2px solid var(--secondary-color); /* Creates a little space around it */
+}
+
+/* Optional: Change color on hover for feedback */
+#work-carousel::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+}
+
+#work-carousel img {
+    flex: 0 0 50%; /* Each image fills the carousel area */
+    scroll-snap-align: start;
+    object-fit: contain; /* Or 'cover' depending on your preference */
+
+}
+
+.wrk-image {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+#work-tags {
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap; /* Forces tags to stay on one row */
+    overflow-x: auto;   /* Allows horizontal scroll if there are too many tags */
+    width: 100%;
+    scroll-snap-type: x mandatory;
+}
+
+.tag {
+    /* Style the orange pill shape */
+    background-color: var(--primary-color);
+    color: var(--on-white);
+    
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 1.5rem;
+    padding: 0 8px;
+    border-radius: 50px;
+    
+    /* Use clamp for fluid font size: 
+       Min size: 10px, Preferred: 0.9vw, Max: 14px */
+    font-size: clamp(8px, 0.9vw, 12px);
+    
+    font-family: var(--sub-font);
+    font-weight: 350;
+    
+    /* Ensure text doesn't wrap inside the pill */
+    white-space: nowrap; 
+}
+
+
+
 /* The Modal Overlay */
 .modal {
   display: none;
@@ -405,10 +492,12 @@ p.hero-small-text {
   background-color: var(--black);
   color: var(--on-white);
   padding: 3.5vw 3vw 3.5rem;
-  display: grid;
-  /* Top bar gets auto, body description stretches, link goes to floor */
-  grid-template-rows: auto 1fr auto;
-  gap: 4rem;
+  
+  /* Change this: Remove grid-template-rows to stop the 'stretching' */
+  display: flex;
+  flex-direction: column; 
+  gap: 0; /* We will control spacing manually */
+  
   font-family: var(--main-font);
 }
 
@@ -821,9 +910,7 @@ p.hero-small-text {
 
 .member-text {
   font-family: var(--main-font);
-  font-size: var(
-    --fs-body-member
-  ); /* Controlled by root body font-size token */
+  font-size: var(--fs-body-member); /* Controlled by root body font-size token */
   font-weight: var(--fw-body); /* Controlled by root font-weight token */
   line-height: var(--lh-body); /* Controlled by root line-height token */
   margin: 0;
@@ -979,7 +1066,7 @@ p.hero-small-text {
 
 
 
-   @media screen and (max-width: 768px) {
+   @media screen and (max-width: 1024px) {
 
     .hero {
       display: none;
@@ -1202,6 +1289,10 @@ text-align: center;
 
     .manifesto-card .intro-body p {
     font-size: 1.1rem;
+  }
+
+  .philo-main-title {
+    padding-bottom: 40px;
   }
 
 
