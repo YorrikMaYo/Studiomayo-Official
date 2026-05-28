@@ -37,6 +37,17 @@ ROOT — CSS VARIABLES -- CONTROL CENTRE
   --fw-h2: 300;
 }
 
+@supports not (color: oklch(0 0 0)) {
+  :root {
+    --primary-color: #ff2a12;
+    --secondary-color: #6325ff;
+    --off-white: #d3d2d4;
+    --on-white: #f1f0f3;
+    --black: #000000;
+    --black-text: #000000;
+  }
+}
+
 .logo-grey-fill{
   fill: var(--off-white);
 }
@@ -48,6 +59,11 @@ ROOT — CSS VARIABLES -- CONTROL CENTRE
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+}
+
+html,
+body {
+  overflow-x: clip;
 }
 
 /* ========================
@@ -112,9 +128,15 @@ RESET
   box-sizing: border-box;
 }
 
+
+
 body {
   font-family: var(--main-font);
   color: var(--off-white);
+  background-color: var(--black);
+}
+
+.site-wrapper {
   background-color: var(--black);
 }
 
@@ -145,11 +167,8 @@ h2 {
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 2vw; /* Uses vw to keep horizontal alignment consistent with your grid layout */
+  padding: 0 1.5rem;
 
-  /* MODERN GLASS REFACTOR:
-     Uses alpha-transparency combined with backdrop blur so it never strictly 
-     clashes with underlying page content as you scroll. */
   background: color-mix(in oklch, var(--on-white) 75%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px); /* Safari support */
@@ -1144,7 +1163,8 @@ WORK SECTION - MOBILE REWORK - NEW HTML SECTION
 ============================================================================== */
 
 .mobile-work {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -1157,8 +1177,8 @@ WORK SECTION - MOBILE REWORK - NEW HTML SECTION
     display: flex;
     flex-direction: column;
     padding: 20px 0; /* Blue padding around the picture */
-    height: 100vw;
     padding-top: 40px;
+    min-height: 62.3vh;
 }
 
 .mobile-work-carousel {
@@ -1168,15 +1188,25 @@ WORK SECTION - MOBILE REWORK - NEW HTML SECTION
     scroll-snap-type: x mandatory;
     gap: 15px; /* Space between pictures */
     padding: 0 5%; /* Ensures blue is visible on sides */
+    
 }
 
 .mobile-work-image {
     flex: 0 0 90%; /* Forces images to be 90% of width */
     scroll-snap-align: center;
     object-fit: contain;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    
 }
 
-/* Nav is now inside the blue zone */
+.mobile-work-image.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
 .mobile-work-nav {
     display: flex;
     justify-content: space-between;
@@ -1185,10 +1215,11 @@ WORK SECTION - MOBILE REWORK - NEW HTML SECTION
     color: var(--on-white);
 }
 
-/* Bottom White Square */
+
 .mobile-work-info-wrapper {
-    height: 100vw;
-    background-color: var(--on-white); /* Replace with your var */
+    min-height: 50vh;
+    height: auto;
+    background-color: var(--on-white); 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1196,7 +1227,21 @@ WORK SECTION - MOBILE REWORK - NEW HTML SECTION
 
 .nav-center { display: flex; flex-direction: column; align-items: center; }
 .swipe-text { font-size: 0.9rem; opacity: 0.7; }
-.mobile-nav-btn { font-size: 1.5rem; }
+.mobile-nav-btn { font-size: 1.8rem; }
+
+#mb-btn-prev, #mb-btn-next {
+    /* The base transition: 'ease-out' makes it feel responsive */
+    transition: transform 0.15s ease-out;
+    transform: scale(1);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; /* Removes the Android default highlight */
+}
+
+/* This triggers the moment the user's finger touches the screen */
+#mb-btn-prev:active, #mb-btn-next:active {
+    transform: scale(0.85);
+}
 
 .mobile-work-title {
     text-align: center;
@@ -1483,11 +1528,10 @@ text-align: center;
     --fs-nav: 1.2rem;
   }
 
+body {
+  overflow-x: clip;
+}
 
-
-  body {
-    overflow-x: hidden;
-  }
 
   .navbar {
     padding: 0 1.5rem;
@@ -1503,28 +1547,33 @@ text-align: center;
   }
 
   /* MOBILE NAV */
-  .nav {
+.nav {
     position: fixed;
     top: 0;
     right: 0;
 
-    width: 100%;
-    height: 100vh;
+    width: 100vw;
+    height: 100dvh;
 
     background: var(--on-white);
-    
 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 2rem;
 
     transform: translateX(100%);
     transition: transform 0.4s ease;
 
+    overflow-x: hidden;
+
     z-index: 1500;
-  }
+}
+
+body.nav-open .nav {
+    transform: translateX(0);
+}
 
 
 

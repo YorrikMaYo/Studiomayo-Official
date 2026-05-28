@@ -85,7 +85,7 @@ function loadProject(index) {
     const project = myPortfolio[index];
     const titleElement = document.querySelector('.mobile-work-title');
     const descElement = document.querySelector('.mobile-work-description');
-    const tagsContainer = document.querySelector('.mobile-work-tags'); // Target the tag container
+    const tagsContainer = document.querySelector('.mobile-work-tags');
     const counterElement = document.getElementById('project-counter');
     
     if (!carousel) return;
@@ -100,9 +100,19 @@ function loadProject(index) {
     project.images.forEach(src => {
         const img = document.createElement('img');
         img.src = src;
-        img.className = 'mobile-work-image';
+        // Keep the base class for CSS styling
+        img.className = 'mobile-work-image'; 
         img.alt = project.title;
+        
+        // 1. Add image to the container
         carousel.appendChild(img);
+        
+        // 2. TRIGGER ANIMATION: 
+        // We use a tiny timeout so the browser recognizes the image is 
+        // "in the document" before adding the 'fade-in' class.
+        setTimeout(() => {
+            img.classList.add('fade-in');
+        }, 50); 
     });
 
     // Refresh Tags Dynamically
@@ -120,32 +130,43 @@ function loadProject(index) {
     currentProjectIndex = index;
 }
 
+// --- FAILSAFE NAVIGATION BUTTONS ---
+const btnNext = document.getElementById('mb-btn-next');
+const btnPrev = document.getElementById('mb-btn-prev');
+
+if (btnNext) {
+    btnNext.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentProjectIndex = (currentProjectIndex + 1) % myPortfolio.length;
+        loadProject(currentProjectIndex);
+    });
+}
+
+if (btnPrev) {
+    btnPrev.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentProjectIndex = (currentProjectIndex - 1 + myPortfolio.length) % myPortfolio.length;
+        loadProject(currentProjectIndex);
+    });
+}
+
 // Swipe detection logic
 carousel.addEventListener('scroll', () => {
+    // Note: scrollLeft can be negative on iOS/Android "bouncing" behavior
     const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    
-    // We add a "buffer" threshold (e.g., 50px) to prevent accidental switching
     const threshold = 50; 
     
-    // 1. Next Project (Scroll Right)
-    // Only switch if the user has scrolled past the end by at least the threshold
     if (carousel.scrollLeft >= maxScroll + threshold && !carousel.dataset.isSwitching) {
         carousel.dataset.isSwitching = "true";
         currentProjectIndex = (currentProjectIndex + 1) % myPortfolio.length;
         loadProject(currentProjectIndex);
-        
-        // Reset the "isSwitching" flag after 1 second
         setTimeout(() => { delete carousel.dataset.isSwitching }, 1000);
     }
     
-    // 2. Previous Project (Scroll Left)
-    // Only switch if the user has scrolled past the start by at least the threshold
     if (carousel.scrollLeft <= -threshold && !carousel.dataset.isSwitching) {
         carousel.dataset.isSwitching = "true";
         currentProjectIndex = (currentProjectIndex - 1 + myPortfolio.length) % myPortfolio.length;
         loadProject(currentProjectIndex);
-        
-        // Reset the "isSwitching" flag after 1 second
         setTimeout(() => { delete carousel.dataset.isSwitching }, 1000);
     }
 });
