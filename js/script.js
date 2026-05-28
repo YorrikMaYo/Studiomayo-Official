@@ -79,7 +79,7 @@
             desc: `A custom font by Yorrik Oyen designed for a project about twinning. It is based on the idea of two identical shapes that are connected to each other. The shapes are inspired by the concept of twinning, which is the phenomenon of two people being born at the same time and sharing a special bond. 
         
             The font is designed to be used in a variety of contexts, such as headlines, logos, and body text. It is a unique and eye-catching font that can add a touch of personality to any design project.`,
-            tags: ["Marcel VR.", "Type Design", "LUCA"],
+            tags: ["Yorrik O.", "Type Design", "LUCA"],
             images: [
                 "webp-im/twinning_1.webp",
                 "webp-im/twinning_2.webp",
