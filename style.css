@@ -883,6 +883,7 @@ p.hero-small-text {
   height: 100%;
   object-fit: cover;
   display: block;
+  aspect-ratio: 1 / 1;
 }
 
 /* ==========================================================================
@@ -1340,6 +1341,10 @@ text-align: center;
     padding-bottom: 40px;
   }
 
+  /* MEET THE TEAM ADJUSTMENTS */
+
+
+
 
    }
 
@@ -1435,6 +1440,7 @@ text-align: center;
     grid-template-columns: 1fr;
     height: auto;
   }
+  
 
   .intro-section {
     grid-template-columns: 1fr;
@@ -1478,10 +1484,12 @@ text-align: center;
 
   .team-main-title {
     font-size: 4rem;
+    padding-bottom: 15px;
   }
 
   .member-name {
     font-size: 2rem;
+    padding-bottom: 10px;
   }
 
   .member-text {
