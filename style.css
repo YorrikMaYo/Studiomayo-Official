@@ -851,7 +851,8 @@ p.hero-small-text {
 
 .team-section {
   /* Hard-locked 30vw matrix height keeps the outer blocks perfectly square */
-  height: 30vw;
+  min-height: 30vw;
+  height: auto;
   display: grid;
 
   /* 30vw Square | Dynamic Center Space | 30vw Square */
@@ -934,9 +935,9 @@ p.hero-small-text {
   font-weight: var(--fw-body); /* Controlled by root font-weight token */
   line-height: var(--lh-body); /* Controlled by root line-height token */
   margin: 0;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto; /* Nicely breaks words at the end of lines */
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
 /* ==========================================================================
